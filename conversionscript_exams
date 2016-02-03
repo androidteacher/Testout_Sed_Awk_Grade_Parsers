@@ -5,18 +5,12 @@ sed -i 's/\"//g' test1.csv
 sed -i 's/%/ /g' test1.csv
 sed -i 's/, / /g' test1.csv
 #curve
+#This script adds 10 points to testout exam grades, curving it up. Comment out the following
+#line and uncomment the line under nocurve for a zero curve. Change the number 10 above in the 
+#first line to any number you like for a stronger or weaker curve
 cat test1.csv | awk 'BEGIN {FS=","} { sum = $2 + $3; }; {print $1 "," sum }' > IT.csv
 #nocurve
 #cat test1.csv | awk 'BEGIN {FS=","} {print $1 "," $2 }' > test.csv
-
-
-
-#sed -i 's/.0//g' test.csv
-
-#sed -i 's/,$/,m/g' test.csv
-#sed -i 's/Bain Allison (abain_eta),m/Bain Allison (abain_eta),100/g' test.csv
-#X=$(cat test.csv | awk 'BEGIN {FS=","} NR==1 {print $2}' | sed 's/ /_/g')
-#cp test.csv "$X"
 ./conversionscript2 "IT.csv"
 
 
