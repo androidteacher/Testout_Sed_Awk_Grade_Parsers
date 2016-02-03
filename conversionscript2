@@ -1,0 +1,5 @@
+#This file should contain a list of students.
+
+sed -i 's/testout_user_name/student_id/g' $1
+sed -i 's/testout_user_name/student_id/g' $1
+sed -i 's/testout_user_name/student_id/g' $1

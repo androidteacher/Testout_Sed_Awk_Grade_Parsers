@@ -1,0 +1,22 @@
+
+
+cat gradefile.csv | awk 'BEGIN {FS=","} { sum = $3 + 20; }; {print $1 "," $2 "," $3 ",10" }' > test1.csv
+sed -i 's/\"//g' test1.csv
+sed -i 's/%/ /g' test1.csv
+sed -i 's/, / /g' test1.csv
+#curve
+cat test1.csv | awk 'BEGIN {FS=","} { sum = $2 + $3; }; {print $1 "," sum }' > IT.csv
+#nocurve
+#cat test1.csv | awk 'BEGIN {FS=","} {print $1 "," $2 }' > test.csv
+
+
+
+#sed -i 's/.0//g' test.csv
+
+#sed -i 's/,$/,m/g' test.csv
+#sed -i 's/Bain Allison (abain_eta),m/Bain Allison (abain_eta),100/g' test.csv
+#X=$(cat test.csv | awk 'BEGIN {FS=","} NR==1 {print $2}' | sed 's/ /_/g')
+#cp test.csv "$X"
+./conversionscript2 "IT.csv"
+
+

@@ -1,0 +1,25 @@
+a=$1
+y=2
+z=0
+sed -i 's/, / /g' gradefile.csv
+until [ $y -eq $a ]
+do
+yvar="$"$y
+zvar="$"$z
+
+
+echo Processing Field $y....
+
+cat gradefile.csv | awk 'BEGIN {FS=","} {print $1 "," '$yvar' }' > test.csv
+sed -i 's/\"//g' test.csv
+sed -i 's/%/ /g' test.csv
+sed -i 's/,$/,m/g' test.csv
+#sed -i 's/Bain Allison (abain_eta),m/Bain Allison (abain_eta),100/g' test.csv
+X=$(cat test.csv | awk 'BEGIN {FS=","} NR==1 {print $2}' | sed 's/ /_/g')
+cp test.csv "$X"
+./conversionscript2 "$X"
+
+y=$(($y +1 ))
+z=$(($z +1 ))
+echo $y
+done
